@@ -52,7 +52,8 @@ apt-get install -y --no-install-recommends gcc python3-dev && \
 apt-get install -y --no-install-recommends ffmpeg libsm6 libxext6 && \
 # cleanup
 rm -rf /var/lib/apt/lists/*;
-pip3 install uv torch torchvision torchaudio  transformers pysqlite3-binary --index-url https://download.pytorch.org/whl/ --no-cache-dir
+pip3 install uv pysqlite3-binary
+pip3 install torch torchvision torchaudio  transformers  --index-url https://download.pytorch.org/whl/ --no-cache-dir
 cp /usr/local/python3.11/bin/uv* /usr/bin/
 uv pip install --no-cache-dir -r /app/backend/requirements.txt && \
     python -c "import os; from sentence_transformers import SentenceTransformer; SentenceTransformer(os.environ['RAG_EMBEDDING_MODEL'], device='cpu')" && \
